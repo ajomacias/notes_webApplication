@@ -1,0 +1,60 @@
+@api = http://localhost:4000/api
+
+################################################
+POST {{api}}/login HTTP/1.1
+Content-type: application/json
+                                           
+{
+    "usuario": "anderk222",
+    "password": "0981942117tanki"
+}
+
+#################################################
+POST {{api}}/registrarse HTTP/1.1
+Content-type: application/json                                                
+
+{
+    "usuario": "anderk222",
+    "password": "0981942117tanki"
+}
+
+##################################################
+POST {{api}}/agregar_nota HTTP/1.1
+Content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6ImFuZGVyazIyMiIsImlhdCI6MTYzNjk5MDAwMn0.4sRBwpR1v6ogw46RGKIEZAxR3DoVPmGQQg5EimJJMMI
+
+{
+    "titulo":"Deber calculo lineal",
+    "cuerpo":"Como sacar el limite de unass linea",
+    "import":"2"
+}
+
+##################################################
+DELETE  {{api}}/deleteNote/4 HTTP/1.1
+Content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibmFtZSI6IkFuZGVyc29uIiwiaWF0IjoxNjM2OTQ4NDEyfQ.G9zxFkK-Z9vMBalHt0MZ8z_jy7pPVxDPv5gIA1HfDAU
+
+
+##################################################
+PUT {{api}}/editNote/1 HTTP/1.1
+content-type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibmFtZSI6IkFuZGVyc29uIiwiaWF0IjoxNjM2OTQ4NDEyfQ.G9zxFkK-Z9vMBalHt0MZ8z_jy7pPVxDPv5gIA1HfDAU
+
+{
+    "titulo":"Deber calculo lineal",
+    "cuerpo":"Como sacar el limite de una lineas",
+    "import":"2"
+}
+
+                                             
+##################################################
+GET  {{api}}/ver_nota/1 HTTP/1.1
+Content-Type: application/x-www-form-urlencoded;
+
+#################################################
+GET {{api}}/users HTTP/1.1
+Content-type: application/json
+
+#################################################
+GET {{api}}/getNotes HTTP/1.1
+Content-type: application/json                                             
