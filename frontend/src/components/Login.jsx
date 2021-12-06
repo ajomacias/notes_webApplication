@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 import LoginService from '../services/User';
 
 const Login = ()=>{
+    
     const [userName, setuserName] = useState('');
     const [userPassword, setuserPassword] = useState('');
     const [user, setUser] = useState(null);
     const handleLogin = async(event)=>{
         event.preventDefault();
         LoginService.Login()
-        
     }
     return(
         <div>

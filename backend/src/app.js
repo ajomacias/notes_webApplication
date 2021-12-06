@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 app.use(cors());
-app.use(morgan());
+app.use(morgan("dev"));
 // Routes in use
 app.use("/api", indexRouter);
 

@@ -1,13 +1,13 @@
-import React from "react";
-import Header from './Header';
+import React, { Fragment } from "react";
+import Header from "./Header"
 
-const Layout = ({ children }) =>{
-    return(
-        <div>
-            <Header/>
+const Layout = (children) => {
+    return (
+        <Fragment>
             {children}
-        </div>
+        </Fragment>
     );
+
 }
 
 export default Layout;
