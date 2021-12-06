@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom"
 import '../styles/header.css';
 const Header = () => {
     return (
@@ -7,7 +8,7 @@ const Header = () => {
                 <nav>
                     <ul className="nav">
                         <li className="li-nav-logo">
-                            <a href="/"><img className="img-nav" src="../img/logo.png" alt="" /></a>
+                            <NavLink className="img-nav" to="/"><img src="../img/logo.png" alt="" /></NavLink>
                         </li>
                         <a href="/">
                             <h2 className="h2-nav">NotesAnder</h2>

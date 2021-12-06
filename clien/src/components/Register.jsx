@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Navigate } from "react-router-dom"
 import '../styles/register.css';
 
 const Register = ()=>{
@@ -52,9 +51,6 @@ const Register = ()=>{
             return;
         }
         
-
-
-
     }
     
     return(
