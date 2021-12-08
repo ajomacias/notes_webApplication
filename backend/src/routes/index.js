@@ -14,6 +14,6 @@ router.delete('/deleteNote/:id', controlPost.deleteNote);
 router.put('/deleteNote/:id', controlPost.changePassword);
 router.put('/editNote/:id', controlPost.editNote);
 router.post('/login', controlPost.loguearse);
-router.post('/registrarse', controlPost.registrarse);
+router.post('/register', controlPost.registrarse);
 
 module.exports = router;

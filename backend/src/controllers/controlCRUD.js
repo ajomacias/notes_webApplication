@@ -43,18 +43,29 @@ controller.loguearse = async (req, res, next) => {    //LOGUEARSE
 controller.registrarse = async (req, res) => {   //REGISTRARSE
   const usuario = req.body.usuario;
   const clave = req.body.password;
+  console.log("---------Clave----------")
+  console.log(clave)
   const data = await tableUsers.findOne({
     where: { name_user: `${usuario}` },
   });
   if (data) {
-    return res.status(401).json({ error:'User is exist'});
+    return res.status(401).json({ error:'Este usuario ya existe'});
   }
-  const claveHash = await bcrypt.hash(clave, 8);
-  const newUser = await tableUsers.create({
+  let claveHash = null;
+  try{
+  claveHash = await bcrypt.hash(clave, 7);
+}
+catch(err){
+  console.log(err)
+  if(err){
+    return res.status(401).json({ error:'hubo un error al encriptar la contraseña :('});
+  }
+}
+ await tableUsers.create({
     name_user: usuario,
     clave_user: claveHash,
   });
-  res.status(200).json({newUser, msj:'User register'});
+  res.status(200).json({msj:'Usuario registrado correctamente'});
 }
 
 /*_________________________________________________________________________*/

@@ -12,22 +12,25 @@
     display: flex;
     margin: 0;
     height: 80px;
-    padding-top: 14px;
+    padding: 0;
     color: azure;
-    padding-right: 0;
 }
 .img-nav{
-    width: 40px;
-    padding: 0; 
+    width: 70px;
+    padding: 0;
+    margin:0;
+    margin-left: 10px;
+    margin-top:4px ;
 }
 .li-nav-logo {
     display: block;
 
 }
-a .h2-nav{
+.h2-nav{
     color: azure;
-    margin-top: 10px;
+    margin-top: 24px;
     display: inline-block;
+
 
 }
 .div-items{
@@ -37,7 +40,7 @@ a .h2-nav{
 }
 .li-nav-items{
     display: inline-block;
-    margin-top: 13px;
+    margin-top: 30px;
     margin-right:130px ;
 }
 .li-nav-items a{

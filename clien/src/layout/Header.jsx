@@ -1,6 +1,6 @@
 import React from "react";
-import { NavLink } from "react-router-dom"
 import '../styles/header.css';
+import logo from "../images/logo/logo.png"
 const Header = () => {
     return (
         <div className="div-complete-pages">
@@ -8,10 +8,10 @@ const Header = () => {
                 <nav>
                     <ul className="nav">
                         <li className="li-nav-logo">
-                            <NavLink className="img-nav" to="/"><img src="../img/logo.png" alt="" /></NavLink>
+                            <a href="/"> <img className="img-nav" src={logo} alt="" /></a>
                         </li>
                         <a href="/">
-                            <h2 className="h2-nav">NotesAnder</h2>
+                            <h2 className="h2-nav">NotesAnder</h2>  
                         </a>
                         <li className="li-nav-logo">
                             <a href="/"></a>
