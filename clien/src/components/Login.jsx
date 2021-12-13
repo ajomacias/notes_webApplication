@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Login = ()=>{
     
     return(
@@ -13,7 +15,7 @@ const Login = ()=>{
             <label for="password">INGRESE SU CONTRASEÑA</label>
             <input id="password" name="password"  type="password" required />
             <input className="botton-login" type="submit" value="Ingresar" />
-            <a href="/register">No tienes cuenta</a>
+            <Link to="/register">No tienes cuenta</Link>
             </form>
         </div>
     </div>

@@ -4,7 +4,7 @@ import Header from './Header';
 const Layout = ({children}) => {
     const url = window.location.pathname
     console.log(url)
-    if(url == "/register" || url == "/login"){
+    if(url === "/register" || url === "/login"){
         return(
             <Fragment>
                 {children}
