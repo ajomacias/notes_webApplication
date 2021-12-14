@@ -8,8 +8,6 @@ const Private = ({children})=>{
     {children}
     </>
     :window.location.href="/login"
-    
-
 }
 
 export default Private;
