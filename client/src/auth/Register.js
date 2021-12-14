@@ -1,29 +1,54 @@
+import { ApiUri } from "../helpers/ApiUri"
 import alertify from "alertifyjs"
-function validateName(){
+import axios from "axios"
+
+function validateName() {
     let us = document.getElementById("usuario").value;
-    return true
+    return us
 }
 
-function validatePass(){
+function validatePass() {
     let pass = document.getElementById("password").value;
-    if(pass.length < 10){
-        return false
+    if (pass.length < 10) {
+        return null
 
     }
-    return true
+    return pass
 }
 
-function sendForm(e){
+async function sendForm(e) {
     e.preventDefault()
-    if(!validateName()){
+    let name = validateName()
+    if (!name) {
         alertify.warning("El usuario vale ya existe")
-        
+        return
+
     }
-    if(!validatePass){
+    let pass = validatePass()
+    
+    if (!pass) {
         alertify.warning("La contraseña debe tener minimo 10 caracteres")
         return
     }
-    alertify.success("ok")
+    const data = {
+        usuario: name,
+        password: pass
+    }
+    let msj;
+    
+    try {
+        msj = await axios({
+            method:"POST",
+            url:ApiUri+"/register",
+            data:data
+        })
+        console.log(msj)
+    } catch (err) {
+        console.log(err)
+        alertify.warning("Este usuario ya existe")
+        return
+}
+alertify.success(msj.data.msj)
 }
 
 export default sendForm;

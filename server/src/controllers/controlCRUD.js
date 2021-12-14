@@ -56,7 +56,6 @@ controller.registrarse = async (req, res) => {   //REGISTRARSE
   claveHash = await bcrypt.hash(clave, 7);
 }
 catch(err){
-  console.log(err)
   if(err){
     return res.status(401).json({ error:'hubo un error al encriptar la contraseña :('});
   }
