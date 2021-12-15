@@ -1,40 +1,72 @@
-import { createContext, useState } from "react";
+import { createContext} from "react";
 import { Navigate } from "react-router-dom";
+import { ApiUri } from "../helpers/ApiUri";
+import axios from "axios";
+import alertify from "alertifyjs"
 
 export const AuthContext = createContext()
 
-const AuthProvider = ({children}) =>{
+const AuthProvider = ({ children }) => {
 
     const contextValue = {
-        login(){
-            let user = {id:1,usuario:"Anderpro"}
+        async login() {
+            let us = document.getElementById("usuario").value;
+            let pass = document.getElementById("password").value;
+
+            if (!pass) {
+                alertify.warning("por favor llene todos los campos")
+                return;
+            }
+            if (!us) {
+                alertify.warning("por favor llene todos los campos")
+                return;
+            }
+
+            const data = {
+                usuario: us,
+                password: pass
+            }
+            let msj;
+            let uri = `${ApiUri}/login`
+            try{
+                msj = await axios({
+                    method: "POST",
+                    url:uri,
+                    data:data
+                })
+
+            }catch(error){
+                alertify.warning(error.response.data.error)
+                return;
+            }
+            alertify.success(msj.data.msj)
+            window.localStorage.setItem("session", JSON.stringify(msj.data))
             window.location.href = "/"
-            window.localStorage.setItem("session",JSON.stringify(user))
         },
-        logout(){
+        logout() {
             window.localStorage.removeItem("session");
-            return(
+            return (
                 <Navigate to="/login" />
             )
         },
-        isLogged(){
+        isLogged() {
             let session = window.localStorage.getItem("session")
             return session
-            ?true
-            :false
+                ? true
+                : false
         },
-        getUser(){
+        getUser() {
             let user = window.localStorage.getItem("session")
             user = JSON.parse(user);
             return user
         }
     }
-    return(
+    return (
         <>
-    <AuthContext.Provider value={contextValue} >
-        {children}
-    </AuthContext.Provider >
-    </>
+            <AuthContext.Provider value={contextValue} >
+                {children}
+            </AuthContext.Provider >
+        </>
     )
 }
 

@@ -35,7 +35,7 @@ controller.loguearse = async (req, res, next) => {    //LOGUEARSE
     name: data.name_user
   }
   const token = createToken(userForToken);
-  res.status(401).json({ token, msj:'User is correct' });
+  res.status(200).json({ token, usuario:userForToken.name});
 }
 
 /*_________________________________________________________________________*/
