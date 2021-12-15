@@ -1,14 +1,21 @@
 import { Link } from "react-router-dom";
+import UseAuth from "../auth/UseAuth";
 
 const Login = ()=>{
+    const auth = UseAuth()
+    console.log(auth)
+
+    const handleLogin = (e) => {
+        e.preventDefault()
+        auth.login()
+    }
+    
     
     return(
         <div>
             <div className="complete">
         <div className="form-login">
-            <form action="#" onSubmit={(e)=>{
-                console.log(e)
-            }}>
+            <form onSubmit={handleLogin}>
                 <h2>login</h2>
             <label for="usuario">INGRESE SU NOMBRE DE USUARIO</label>
             <input id="usuario"  name="usuario" type="text" required />

@@ -9,13 +9,17 @@ const AuthProvider = ({children}) =>{
         user,
         login(){
             setUser({id:1,usuario:"Anderpro"})
-
+            window.localStorage.setItem("session",JSON.stringify(user));
         },
         logout(){
+            window.localStorage.removeItem("session");
             setUser(null)
         },
         isLogged(){
-            return !!user
+            const session = window.localStorage.getItem("session")
+            return !!session
+            ?true
+            :false
         }
     }
     return(

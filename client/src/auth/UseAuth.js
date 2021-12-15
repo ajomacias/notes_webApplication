@@ -1,4 +1,4 @@
-import React,{useContext} from 'react'
+import {useContext} from 'react'
 import { AuthContext } from './AuthProvider'
 
 
@@ -7,4 +7,4 @@ const UseAuth = () => {
     return contextValue
 }
 
-export default UseAuth
+export default UseAuth;

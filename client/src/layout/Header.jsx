@@ -2,7 +2,9 @@ import React from "react";
 import { NavLink } from "react-router-dom"
 import '../styles/header.css';
 import logo from "../images/logo/logo.png"
+import UseAuth from "../auth/UseAuth";
 const Header = () => {
+    const auth = UseAuth()
     return (
         <div className="div-complete-pages">
             <header>
@@ -30,6 +32,7 @@ const Header = () => {
                             <li className="li-nav-items">
                                <a href="/login">Iniciar sesion</a>
                             </li>
+                            <button onClick={auth.logout} >Logout</button>
                         </div>
                     </ul>
                 </nav>
