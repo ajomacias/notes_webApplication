@@ -7,7 +7,6 @@ const Login = ()=>{
 
     const handleLogin = (e) => {
         e.preventDefault()
-        auth.login()
     }
     
     
@@ -21,7 +20,7 @@ const Login = ()=>{
             <input id="usuario"  name="usuario" type="text" required />
             <label for="password">INGRESE SU CONTRASEÑA</label>
             <input id="password" name="password"  type="password" required />
-            <input className="botton-login" type="submit" value="Ingresar" />
+            <input onClick={auth.login} className="botton-login" type="submit" value="Ingresar" />
             <Link to="/register">No tienes cuenta</Link>
             </form>
         </div>

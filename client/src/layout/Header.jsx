@@ -5,6 +5,7 @@ import logo from "../images/logo/logo.png"
 import UseAuth from "../auth/UseAuth";
 const Header = () => {
     const auth = UseAuth()
+    let user = auth.getUser();
     return (
         <div className="div-complete-pages">
             <header>
@@ -31,6 +32,9 @@ const Header = () => {
                             </li>
                             <li className="li-nav-items">
                                <a href="/login">Iniciar sesion</a>
+                            </li>
+                            <li className="li-nav-items">
+                                {user.usuario}
                             </li>
                             <button onClick={auth.logout} >Logout</button>
                         </div>

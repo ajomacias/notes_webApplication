@@ -25,7 +25,7 @@ async function sendForm(e) {
 
     }
     let pass = validatePass()
-    
+
     if (!pass) {
         alertify.warning("La contraseña debe tener minimo 10 caracteres")
         return
@@ -35,20 +35,18 @@ async function sendForm(e) {
         password: pass
     }
     let msj;
-    
+
     try {
         msj = await axios({
-            method:"POST",
-            url:ApiUri+"/register",
-            data:data
+            method: "POST",
+            url: ApiUri + "/register",
+            data: data
         })
-        console.log(msj)
-    } catch (err) {
-        console.log(err)
-        alertify.warning("Este usuario ya existe")
+    } catch (error) {
+        alertify.warning(error.response.data.error)
         return
-}
-alertify.success(msj.data.msj)
+    }
+    alertify.success(msj.data.msj)
 }
 
 export default sendForm;
