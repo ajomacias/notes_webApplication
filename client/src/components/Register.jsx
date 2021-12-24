@@ -1,11 +1,13 @@
-import React, { useState } from "react";
-import '../styles/register.css';
+import React, {useEffect} from "react";
 import 'alertifyjs/build/css/alertify.css';
 import { Link } from "react-router-dom";
 import sendForm from "../auth/Register";
+import titleDinamic from "../services/dinamicTitle";
 
 const Register = () => {
-
+    useEffect(() => {
+       titleDinamic()
+    }, [])
     return (
         <div className="complete">
          <div className="form-login">
@@ -18,7 +20,6 @@ const Register = () => {
             <input className="botton-login" type="submit" value="Ingresar" />
             <Link to="/login">Ya tienes cuenta</Link>
           </form>
-          <button onClick={() => localStorage.removeItem("registros")} > remove localStorage </button>
          </div>
         </div>
     );

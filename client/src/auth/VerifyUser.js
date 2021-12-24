@@ -1,12 +1,19 @@
 import UseAuth from "./UseAuth";
+import Header from "../layout/Header"
 
 const Private = ({children})=>{
     const auth = UseAuth()
-    return auth.isLogged()
-    ?(
-        <> {children} </>
+    const verify = auth.isLogged()
+    if(!verify){
+        window.location.href="/login"
+        return;
+    }
+    return(
+        <>
+        <Header />
+        {children}
+        </>
     )
-    :window.location.href="/login"
 }
 
 export default Private;

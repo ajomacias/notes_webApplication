@@ -1,7 +1,12 @@
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 import UseAuth from "../auth/UseAuth";
+import titleDinamic from "../services/dinamicTitle";
 
 const Login = ()=>{
+    useEffect(() => {
+       titleDinamic()
+    }, [])
 
     const auth = UseAuth()
 
@@ -9,7 +14,6 @@ const Login = ()=>{
         e.preventDefault()
         auth.login()
     }
-    
     
     return(
         <div>

@@ -1,5 +1,4 @@
-import { createContext} from "react";
-import { Navigate } from "react-router-dom";
+import { createContext } from "react";
 import { ApiUri } from "../helpers/ApiUri";
 import axios from "axios";
 import alertify from "alertifyjs"
@@ -28,16 +27,21 @@ const AuthProvider = ({ children }) => {
             }
             let msj;
             let uri = `${ApiUri}/login`
-            try{
+            try {
                 msj = await axios({
                     method: "POST",
-                    url:uri,
-                    data:data
+                    url: uri,
+                    data: data
                 })
 
-            }catch(error){
-                alertify.warning(error.response.data.error)
-                return;
+            } catch (error) {
+
+                if (error.response?.data) {
+                    alertify.warning(error.response.data.error)
+                    return;
+                }
+                alertify.warning("Ups hubo problemas al conectarse al servidor :(")
+                return
             }
             alertify.success(msj.data.msj)
             window.localStorage.setItem("session", JSON.stringify(msj.data))
@@ -45,9 +49,7 @@ const AuthProvider = ({ children }) => {
         },
         logout() {
             window.localStorage.removeItem("session");
-            return (
-                <Navigate to="/login" />
-            )
+            window.location.href = "/login"
         },
         isLogged() {
             let session = window.localStorage.getItem("session")

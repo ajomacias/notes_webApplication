@@ -1,12 +1,12 @@
 const express = require('express');
-const indexRouter = require('./routes/index');
-const sequelize = require('./database/db');
+const indexRouter = require('./src/routes/index');
+const sequelize = require('./src/database/db');
 const app = express();
 const cors = require('cors');
 const morgan = require('morgan')
 require('dotenv').config();
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT
 
 
 app.use(express.json());

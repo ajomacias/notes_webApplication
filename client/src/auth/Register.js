@@ -43,7 +43,11 @@ async function sendForm(e) {
             data: data
         })
     } catch (error) {
-        alertify.warning(error.response.data.error)
+        if (error.response?.data) {
+            alertify.warning(error.response.data.error)
+            return
+        }
+        alertify.warning("Ups hubo un problema al conectarse al servidor :(")
         return
     }
     alertify.success(msj.data.msj)
